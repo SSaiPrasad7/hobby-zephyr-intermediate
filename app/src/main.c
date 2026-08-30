@@ -8,9 +8,13 @@ LOG_MODULE_REGISTER(demo, LOG_LEVEL_DBG);
 #define PRIO_A 5
 #define PRIO_B 5
 
+static int counter = 0;
+
 void thread_a_fn(void *p1, void *p2, void *p3)
 {
     while (1) {
+        counter++;
+        LOG_INF("Thread A: counter = %d", counter);
         k_msleep(200);
     }
 }
@@ -18,6 +22,8 @@ void thread_a_fn(void *p1, void *p2, void *p3)
 void thread_b_fn(void *p1, void *p2, void *p3)
 {
     while (1) {
+        counter++;
+        LOG_INF("Thread B: counter = %d", counter);
         k_msleep(300);
     }
 }
